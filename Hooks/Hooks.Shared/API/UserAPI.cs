@@ -23,7 +23,7 @@ namespace Hooks.API
             content.Add("email", email);
             content.Add("password", password);
 
-            HttpResponseMessage responseMessage = await httpClient.PostAsync(new Uri(baseUri, USER_LOGIN), new HttpFormUrlEncodedContent(content));
+            HttpResponseMessage responseMessage = await httpClient.PostAsync(new Uri(API_BASE_URI, USER_LOGIN), new HttpFormUrlEncodedContent(content));
             string response = await responseMessage.Content.ReadAsStringAsync();
 
             if (await HandleErrorAndExit(responseMessage, response)) return null;

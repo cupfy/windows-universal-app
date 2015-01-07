@@ -45,7 +45,7 @@ namespace Hooks.API
             content.Add("type", DEVICE_INTERNAL_TYPE_CODE);
             content.Add("pushId", DEVICE_ID);
 
-            HttpResponseMessage responseMessage = await httpClient.PostAsync(new Uri(baseUri, DEVICE_REGISTER), new HttpFormUrlEncodedContent(content));
+            HttpResponseMessage responseMessage = await httpClient.PostAsync(new Uri(API_BASE_URI, DEVICE_REGISTER), new HttpFormUrlEncodedContent(content));
             string response = await responseMessage.Content.ReadAsStringAsync();
 
             return !(await HandleErrorAndExit(responseMessage, response));

@@ -11,6 +11,10 @@
     
     <Page.BottomAppBar>
         <CommandBar>
+            <CommandBar.SecondaryCommands>
+                <AppBarButton Icon="Link" Label="open web version" Command="{Binding OpenWebsiteCommand}"/>
+            </CommandBar.SecondaryCommands>
+            
             <AppBarButton Icon="Accept" Label="confirm" Command="{Binding AddHookCommand}"/>
         </CommandBar>
     </Page.BottomAppBar>
@@ -27,8 +31,8 @@
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
 
-        <StackPanel Grid.Row="0" Margin="19,0,0,0">
-            <TextBlock Text="HOOKS" Style="{ThemeResource TitleTextBlockStyle}" Margin="0,12,0,0"/>
+        <StackPanel Grid.Row="0" Margin="19,12,0,0">
+            <!--<TextBlock Text="HOOKS" Style="{ThemeResource TitleTextBlockStyle}" Margin="0,12,0,0"/>-->
             <TextBlock Text="add hook" Margin="0,-6.5,0,26.5" Style="{ThemeResource HeaderTextBlockStyle}"/>
         </StackPanel>
 

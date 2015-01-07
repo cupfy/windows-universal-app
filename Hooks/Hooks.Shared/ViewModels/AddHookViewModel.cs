@@ -12,10 +12,12 @@ namespace Hooks.ViewModels
     public class AddHookViewModel
     {
         public RelayCommand AddHookCommand { get; private set; }
+        public RelayCommand OpenWebsiteCommand { get; private set; }
 
         public AddHookViewModel()
         {
             AddHookCommand = new RelayCommand(AddHook);
+            OpenWebsiteCommand = new RelayCommand(OpenWebsite);
         }
 
         public string Namespace { get { return _namespace; } set { _namespace = value; AddHookCommand.RaiseCanExecuteChanged(); } }
@@ -32,6 +34,11 @@ namespace Hooks.ViewModels
                 App.Hooks.Add(hook);
                 App.RootFrame.Navigate(typeof(MainPage));
             }
+        }
+
+        private async void OpenWebsite()
+        {
+            await Windows.System.Launcher.LaunchUriAsync(BaseAPI.WEBVERSION_URI);
         }
 
         #endregion

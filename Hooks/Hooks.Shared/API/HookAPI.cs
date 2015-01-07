@@ -25,7 +25,7 @@ namespace Hooks.API
         {
             string url = String.Format(HOOK_LIST_FORMAT, DeviceAPI.DEVICE_ID);
 
-            HttpResponseMessage responseMessage = await httpClient.GetAsync(new Uri(baseUri, url));
+            HttpResponseMessage responseMessage = await httpClient.GetAsync(new Uri(API_BASE_URI, url));
             string response = await responseMessage.Content.ReadAsStringAsync();
 
             DeviceAPI.IsRegistered = false;
@@ -41,7 +41,7 @@ namespace Hooks.API
             content.Add("namespace", _namespace);
             content.Add("pushId", DeviceAPI.DEVICE_ID);
 
-            HttpResponseMessage responseMessage = await httpClient.PostAsync(new Uri(baseUri, HOOK_CREATE), new HttpFormUrlEncodedContent(content));
+            HttpResponseMessage responseMessage = await httpClient.PostAsync(new Uri(API_BASE_URI, HOOK_CREATE), new HttpFormUrlEncodedContent(content));
             string response = await responseMessage.Content.ReadAsStringAsync();
 
             if (await HandleErrorAndExit(responseMessage, response)) return null;

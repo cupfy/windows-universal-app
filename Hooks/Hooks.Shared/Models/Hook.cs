@@ -18,9 +18,9 @@ namespace Hooks.Models
         public bool Approved { get; set; }
 
         [DataMember(Name = "removed")]
-        public bool Disabled { get; set; }
+        public bool Removed { get; set; }
 
-        public bool Enabled { get { return !Disabled; } set { Disabled = !value; } }
+        public bool Enabled { get { return Approved && !Removed; } set { Removed = !value; } }
     }
     
     public class HookList : ObservableCollection<Hook> { }

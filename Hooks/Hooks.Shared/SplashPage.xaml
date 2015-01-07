@@ -9,10 +9,19 @@
     RequestedTheme="Dark" 
     Background="{StaticResource AppMainBrush}">
 
-    <Grid>
-        <!--<Canvas HorizontalAlignment="Center" VerticalAlignment="Center">-->
-            <!--<Image x:Name="extendedSplashImage" Source="Assets/SplashScreen.png"/>-->
-            <ProgressRing IsActive="True" Width="20" HorizontalAlignment="Center" Foreground="{ThemeResource ApplicationForegroundThemeBrush}" VerticalAlignment="Center"/>
-        <!--</Canvas>-->
+    <Grid x:Name="LayoutRoot">
+        <!--Canvas>
+            <Image Source="Assets/SplashScreen.png" Width="{Binding ActualWidth, ElementName=LayoutRoot, Mode=OneWay}"/>
+        </Canvas>
+        
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="7*"/>
+                <RowDefinition Height="5*"/>
+                <RowDefinition Height="8*"/>
+            </Grid.RowDefinitions>-->
+                
+            <ProgressRing Grid.Row="2" IsActive="True" Width="20" Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+        <!--</Grid>-->
     </Grid>
 </Page>

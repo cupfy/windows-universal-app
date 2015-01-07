@@ -13,7 +13,8 @@ namespace Hooks.API
     public abstract class BaseAPI
     {
         protected HttpClient httpClient = new HttpClient();
-        protected Uri baseUri = new Uri("http://apphooks.mauriciogior.com/", UriKind.Absolute);
+        public static Uri API_BASE_URI = new Uri("http://apphooks.mauriciogior.com/", UriKind.Absolute);
+        public static Uri WEBVERSION_URI = new Uri("http://apphooks.mauriciogior.com/web/", UriKind.Absolute);
 
         protected async Task<bool> HandleErrorAndExit(HttpResponseMessage responseMessage, string response)
         {

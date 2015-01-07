@@ -17,6 +17,7 @@
             </CommandBar.SecondaryCommands>-->
             
             <AppBarButton Icon="Add" Label="new" Command="{Binding AddHookCommand}"/>
+            <AppBarButton Icon="Refresh" Label="refresh" Command="{Binding RefreshCommand}"/>
         </CommandBar>
     </Page.BottomAppBar>
 
@@ -29,26 +30,43 @@
     </Page.Resources>
 
     <ScrollViewer VerticalScrollBarVisibility="Visible" VerticalScrollMode="Enabled">
-        <StackPanel Margin="19,12">
-            <StackPanel.ChildrenTransitions>
-                <TransitionCollection>
-                    <EntranceThemeTransition/>
-                </TransitionCollection>
-            </StackPanel.ChildrenTransitions>
+        <Grid x:Name="LayoutRoot">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
             
-            <TextBlock Text="hooks" Margin="0,-6.5,0,26.5" Style="{ThemeResource HeaderTextBlockStyle}"/>
+            <Grid.ChildrenTransitions>
+                <TransitionCollection>
+                    <EntranceThemeTransition IsStaggeringEnabled="False"/>
+                </TransitionCollection>
+            </Grid.ChildrenTransitions>
 
-            <StackPanel Margin="0,0,0,24" DataContext="{Binding ApprovedHooks}" d:DataContext="{d:DesignData /SampleData/ApprovedHookListSampleData.xaml}">
-                <TextBlock Text="my hooks" Style="{StaticResource TitleTextBlockStyle}" Margin="0,0,0,6"/>
-                <ListView x:Name="ApprovedHooksListView" ItemsSource="{Binding}" ItemTemplate="{StaticResource HooksDataTemplate}" Margin="0,0,0,6"/>
-                <TextBlock Text="Nothing here" Margin="0,0,0,6" Visibility="{Binding Converter={StaticResource EmptyListToVisibilityConverter}}"/>
+            <StackPanel Grid.Row="0" Margin="19,12,0,0">
+                <!--<TextBlock Text="HOOKS" Style="{ThemeResource TitleTextBlockStyle}" Margin="0,12,0,0"/>-->
+                <TextBlock Text="hooks" Margin="0,-6.5,0,26.5" Style="{ThemeResource HeaderTextBlockStyle}"/>
             </StackPanel>
 
-            <StackPanel Margin="0,0,0,24" DataContext="{Binding PendingHooks}" d:DataContext="{d:DesignData /SampleData/PendingHookListSampleData.xaml}" Visibility="{Binding Converter={StaticResource ListToVisibilityConverter}}">
-                <TextBlock Text="pending approvation" Style="{StaticResource TitleTextBlockStyle}" Margin="0,0,0,6"/>
-                <ListView x:Name="PendingHooksListView" ItemsSource="{Binding}" ItemTemplate="{StaticResource HooksDataTemplate}" Margin="0,0,0,6"/>
-                <TextBlock Text="Nothing here" Margin="0,0,0,6" Visibility="{Binding Converter={StaticResource EmptyListToVisibilityConverter}}"/>
-            </StackPanel>
-        </StackPanel>
+            <Grid Grid.Row="1" x:Name="ContentRoot" Margin="19,9.5,19,0">
+                <StackPanel>
+                    <StackPanel.ChildrenTransitions>
+                        <TransitionCollection>
+                            <EntranceThemeTransition IsStaggeringEnabled="True"/>
+                        </TransitionCollection>
+                    </StackPanel.ChildrenTransitions>
+                    
+                    <StackPanel Margin="0,0,0,24" DataContext="{Binding ApprovedHooks}" d:DataContext="{d:DesignData /SampleData/ApprovedHookListSampleData.xaml}">
+                        <TextBlock Text="my hooks" Style="{StaticResource TitleTextBlockStyle}" Margin="0,0,0,6"/>
+                        <ListView x:Name="ApprovedHooksListView" ItemsSource="{Binding}" ItemTemplate="{StaticResource HooksDataTemplate}" Margin="0,0,0,6"/>
+                        <TextBlock Text="Nothing here" Margin="0,0,0,6" Visibility="{Binding Converter={StaticResource EmptyListToVisibilityConverter}}"/>
+                    </StackPanel>
+
+                    <StackPanel Margin="0,0,0,24" DataContext="{Binding PendingHooks}" d:DataContext="{d:DesignData /SampleData/PendingHookListSampleData.xaml}" Visibility="{Binding Converter={StaticResource ListToVisibilityConverter}}">
+                        <TextBlock Text="pending approvation" Style="{StaticResource TitleTextBlockStyle}" Margin="0,0,0,6"/>
+                        <ListView x:Name="PendingHooksListView" ItemsSource="{Binding}" ItemTemplate="{StaticResource HooksDataTemplate}" Margin="0,0,0,6"/>
+                    </StackPanel>
+                </StackPanel>
+            </Grid>
+        </Grid>
     </ScrollViewer>
 </Page>
