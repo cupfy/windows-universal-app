@@ -1,0 +1,4 @@
+﻿<Models:HookList xmlns:Models="using:Hooks.Models">
+	<Models:Hook ID="1" Namespace="org.brunolemos.test1" Approved="True" Enabled="True"/>
+	<Models:Hook ID="2" Namespace="org.brunolemos.test2" Approved="True" Enabled="False"/>
+</Models:HookList>

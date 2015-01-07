@@ -1,41 +1,29 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Package xmlns="http://schemas.microsoft.com/appx/2010/manifest" xmlns:m2="http://schemas.microsoft.com/appx/2013/manifest" xmlns:m3="http://schemas.microsoft.com/appx/2014/manifest" xmlns:mp="http://schemas.microsoft.com/appx/2014/phone/manifest">
-
-  <Identity Name="3fd7d63b-2658-49f8-8d27-09a9d4d306ba"
-            Publisher="CN=brunolemos"
-            Version="1.0.0.0" />
-
-  <mp:PhoneIdentity PhoneProductId="3fd7d63b-2658-49f8-8d27-09a9d4d306ba" PhonePublisherId="00000000-0000-0000-0000-000000000000"/>
-
+  <Identity Name="29428BrunoLemos.Hooks" Publisher="CN=0B66D0B0-F691-4768-B3EE-FC3873EB0D73" Version="0.8.0.0" />
+  <mp:PhoneIdentity PhoneProductId="52b6985a-1a68-4b87-9596-da2ede153726" PhonePublisherId="00000000-0000-0000-0000-000000000000" />
   <Properties>
-    <DisplayName>Hooks.WindowsPhone</DisplayName>
-    <PublisherDisplayName>brunolemos</PublisherDisplayName>
+    <DisplayName>Hooks</DisplayName>
+    <PublisherDisplayName>Bruno Lemos</PublisherDisplayName>
     <Logo>Assets\StoreLogo.png</Logo>
   </Properties>
-
   <Prerequisites>
     <OSMinVersion>6.3.1</OSMinVersion>
     <OSMaxVersionTested>6.3.1</OSMaxVersionTested>
   </Prerequisites>
-  
   <Resources>
-    <Resource Language="x-generate"/>
+    <Resource Language="x-generate" />
   </Resources>
-
   <Applications>
-    <Application Id="App"
-        Executable="$targetnametoken$.exe"
-        EntryPoint="Hooks.WindowsPhone.App">
-        <m3:VisualElements
-            DisplayName="Hooks.WindowsPhone"
-            Square150x150Logo="Assets\Logo.png"
-            Square44x44Logo="Assets\SmallLogo.png"
-            Description="Hooks.WindowsPhone"
-            ForegroundText="light"
-            BackgroundColor="transparent">
-            <m3:DefaultTile Wide310x150Logo="Assets\WideLogo.png" Square71x71Logo="Assets\Square71x71Logo.png"/>
-            <m3:SplashScreen Image="Assets\SplashScreen.png"/>
-        </m3:VisualElements>
+    <Application Id="App" Executable="$targetnametoken$.exe" EntryPoint="Hooks.WindowsPhone.App">
+      <m3:VisualElements DisplayName="Hooks" Square150x150Logo="Assets\Logo.png" Square44x44Logo="Assets\SmallLogo.png" Description="Push any notification to your devices through a one line API." ForegroundText="light" BackgroundColor="#3498db" ToastCapable="true">
+        <m3:DefaultTile Wide310x150Logo="Assets\WideLogo.png" Square71x71Logo="Assets\Square71x71Logo.png">
+        </m3:DefaultTile>
+        <m3:SplashScreen Image="Assets\SplashScreen.png" />
+        <m3:InitialRotationPreference>
+          <m3:Rotation Preference="portrait" />
+        </m3:InitialRotationPreference>
+      </m3:VisualElements>
     </Application>
   </Applications>
   <Capabilities>
