@@ -18,10 +18,12 @@
     <Compile Include="$(MSBuildThisFileDirectory)API\BaseAPI.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)API\HookAPI.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)API\DeviceAPI.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)API\NotificationAPI.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)API\UserAPI.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)Common\AppSettingsBase.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Common\EmptyListToVisibilityConverter.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Common\NavigationHelper.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Common\Notifiable.cs" />
@@ -45,6 +47,7 @@
     <Compile Include="$(MSBuildThisFileDirectory)SplashPage.xaml.cs">
       <DependentUpon>SplashPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)Utils\AppSettings.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ViewModels\AddHookViewModel.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ViewModels\MainViewModel.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ViewModels\RegisterDeviceViewModel.cs" />

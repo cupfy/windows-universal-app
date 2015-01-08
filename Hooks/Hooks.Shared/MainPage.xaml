@@ -62,7 +62,7 @@
                     </StackPanel>
 
                     <StackPanel Margin="0,0,0,24" DataContext="{Binding PendingHooks}" d:DataContext="{d:DesignData /SampleData/PendingHookListSampleData.xaml}" Visibility="{Binding Converter={StaticResource ListToVisibilityConverter}}">
-                        <TextBlock Text="pending approvation" Style="{StaticResource TitleTextBlockStyle}" Margin="0,0,0,6"/>
+                        <TextBlock Text="pending approval" Style="{StaticResource TitleTextBlockStyle}" Margin="0,0,0,6"/>
                         <ListView x:Name="PendingHooksListView" ItemsSource="{Binding}" ItemTemplate="{StaticResource HooksDataTemplate}" Margin="0,0,0,6"/>
                     </StackPanel>
                 </StackPanel>
