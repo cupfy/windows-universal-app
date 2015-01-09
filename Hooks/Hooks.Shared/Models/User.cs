@@ -1,15 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Runtime.Serialization;
-using System.Text;
 
 namespace Hooks.Models
 {
     [DataContract]
-    public class User
+    public class User : BaseModel
     {
         [DataMember(Name = "_id")]
-        public String ID { get; set; }
+        public String ID { get; private set; }
 
         [DataMember(Name = "apiSecret")]
         public String ApiSecret { get; set; }

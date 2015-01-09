@@ -11,10 +11,10 @@
     
     <Page.BottomAppBar>
         <CommandBar>
-            <!--<CommandBar.SecondaryCommands>
+            <CommandBar.SecondaryCommands>
                 <AppBarButton Icon="CellPhone" Label="change device name" Command="{Binding ChangeDeviceNameCommand}"/>
-                <AppBarButton Icon="Setting" Label="settings" Command="{Binding OpenSettingsCommand}"/>
-            </CommandBar.SecondaryCommands>-->
+                <!--<AppBarButton Icon="Setting" Label="settings" Command="{Binding OpenSettingsCommand}"/>-->
+            </CommandBar.SecondaryCommands>
             
             <AppBarButton Icon="Add" Label="new" Command="{Binding AddHookCommand}"/>
             <AppBarButton Icon="Refresh" Label="refresh" Command="{Binding RefreshCommand}"/>

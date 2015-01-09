@@ -1,18 +1,16 @@
-﻿using System;
-using System.Collections.ObjectModel;
+﻿using System.Collections.ObjectModel;
 using System.Runtime.Serialization;
-using Hooks.Common;
 
 namespace Hooks.Models
 {
     [DataContract]
-    public class Hook
+    public class Hook : BaseModel
     {
         [DataMember(Name = "_id")]
-        public String ID { get; set; }
+        public string ID { get; private set; }
 
         [DataMember(Name = "namespace")]
-        public String Namespace { get; set; }
+        public string Namespace { get; set; }
 
         [DataMember(Name = "approved")]
         public bool Approved { get; set; }

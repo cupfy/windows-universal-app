@@ -1,15 +1,10 @@
 ﻿using Hooks.API;
 using Hooks.Common;
-using Hooks.Models;
 using System;
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.Linq;
-using Windows.Web.Http;
 
 namespace Hooks.ViewModels
 {
-    public class AddHookViewModel
+    public class AddHookViewModel : BaseViewModel
     {
         public RelayCommand AddHookCommand { get; private set; }
         public RelayCommand OpenWebsiteCommand { get; private set; }
@@ -27,11 +22,15 @@ namespace Hooks.ViewModels
 
         private async void AddHook()
         {
-            Hook hook = await HookAPI.Instance.Subscribe(Namespace);
+            if (String.IsNullOrEmpty(Namespace)) return;
 
-            if (hook != null)
+            var res = await DeviceAPI.Instance.Hook(Namespace);
+
+            if (res != null)
             {
-                App.Hooks.Add(hook);
+                App.Hooks = res.Hooks;
+                App.DeviceInfo = res.Device;
+
                 App.RootFrame.Navigate(typeof(MainPage));
             }
         }

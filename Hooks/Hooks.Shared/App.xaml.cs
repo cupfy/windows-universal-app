@@ -1,5 +1,7 @@
 ﻿using Hooks.Models;
+using Hooks.Utils;
 using System;
+using System.ComponentModel;
 using System.Diagnostics;
 using Windows.ApplicationModel;
 using Windows.ApplicationModel.Activation;
@@ -13,8 +15,11 @@ namespace Hooks
 {
     public sealed partial class App : Application
     {
-        public static Frame RootFrame = Window.Current.Content as Frame;
+        public static event EventHandler HooksChanged;
+        public static event EventHandler DeviceInfoChanged;
 
+        public static Frame RootFrame = Window.Current.Content as Frame;
+        
         public static HookList Hooks
         {
             get { return hooks; }
@@ -22,10 +27,28 @@ namespace Hooks
             set
             {
                 hooks.Clear();
-                if(value != null) foreach (var item in value) hooks.Add(item);
+                if (value != null) foreach (var item in value) hooks.Add(item);
+
+                var handler = HooksChanged;
+                if (handler != null) handler(null, EventArgs.Empty);
             }
         }
         private static HookList hooks = new HookList();
+
+        public static Device DeviceInfo
+        {
+            get { return device; }
+            set {
+                device = value;
+
+                var handler = DeviceInfoChanged;
+                if (handler != null) handler(null, EventArgs.Empty);
+             }
+        }
+        private static Device device = null;
+
+        public static bool? IsRegistered { get; internal set; }
+        public static string ChannelUri { get; set; }
 
 #if WINDOWS_PHONE_APP
         private TransitionCollection transitions;
@@ -36,12 +59,16 @@ namespace Hooks
             this.InitializeComponent();
             this.Suspending += this.OnSuspending;
             this.UnhandledException += App_UnhandledException;
+            
         }
 
         private async void App_UnhandledException(object sender, UnhandledExceptionEventArgs e)
         {
             if (!e.Handled) {
-                await new MessageDialog(e.Message, "Oops...").ShowAsync();
+                e.Handled = true;
+                await new MessageDialog(e.Message, "Fatal error").ShowAsync();
+
+                App.Current.Exit();
             }
         }
 

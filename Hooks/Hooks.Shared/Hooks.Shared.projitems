@@ -16,9 +16,7 @@
       <DependentUpon>AddHookPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="$(MSBuildThisFileDirectory)API\BaseAPI.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)API\HookAPI.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)API\DeviceAPI.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)API\NotificationAPI.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)API\UserAPI.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
@@ -39,6 +37,8 @@
     <Compile Include="$(MSBuildThisFileDirectory)MainPage.xaml.cs">
       <DependentUpon>MainPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)Models\BaseModel.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Models\Device.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Models\Hook.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Models\User.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)RegisterDevicePage.xaml.cs">
@@ -49,6 +49,7 @@
     </Compile>
     <Compile Include="$(MSBuildThisFileDirectory)Utils\AppSettings.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ViewModels\AddHookViewModel.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ViewModels\BaseViewModel.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ViewModels\MainViewModel.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ViewModels\RegisterDeviceViewModel.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ViewModels\LoginViewModel.cs" />

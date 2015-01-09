@@ -1,9 +1,6 @@
-﻿using Newtonsoft.Json;
-using System;
-using System.Collections.Generic;
+﻿using System;
 using System.Diagnostics;
 using System.Runtime.Serialization;
-using System.Text;
 using System.Threading.Tasks;
 using Windows.UI.Popups;
 using Windows.Web.Http;
@@ -19,10 +16,10 @@ namespace Hooks.API
         protected async Task<bool> HandleErrorAndExit(HttpResponseMessage responseMessage, string response)
         {
             Debug.WriteLine("Response: " + response);
-
+            
             if (!responseMessage.IsSuccessStatusCode)
             {
-                if (!String.IsNullOrEmpty(responseMessage.ReasonPhrase))
+                if (!String.IsNullOrEmpty(responseMessage.ReasonPhrase) && responseMessage.ReasonPhrase.Substring(0, 9) != "code: 10,")
                     await new MessageDialog(responseMessage.ReasonPhrase, "Oops!").ShowAsync();
 
                 return true;
@@ -32,13 +29,13 @@ namespace Hooks.API
         }
     }
 
-    [DataContract]
-    class ErrorResponse
-    {
-        [DataMember(Name = "code")]
-        public string Code { get; set; }
+    //[DataContract]
+    //class ErrorResponse
+    //{
+    //    [DataMember(Name = "code")]
+    //    public string Code { get; set; }
 
-        [DataMember(Name = "description")]
-        public string Description { get; set; }
-    }
+    //    [DataMember(Name = "description")]
+    //    public string Description { get; set; }
+    //}
 }

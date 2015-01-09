@@ -7,7 +7,7 @@ using Windows.Web.Http;
 
 namespace Hooks.ViewModels
 {
-    public class LoginViewModel
+    public class LoginViewModel : BaseViewModel
     {
         public RelayCommand LoginCommand { get; private set; }
 

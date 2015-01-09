@@ -1,10 +1,6 @@
 ﻿using Hooks.API;
-using Hooks.Models;
+using Hooks.Utils;
 using System;
-using System.Threading.Tasks;
-using Windows.Networking.PushNotifications;
-using Windows.UI.ViewManagement;
-using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Navigation;
 
@@ -21,13 +17,22 @@ namespace Hooks
 
         async void LoadApplication()
         {
-            //get hooks and update local IsRegistered property
-            App.Hooks = await HookAPI.Instance.GetHooks();
+            App.ChannelUri = AppSettings.Instance.ChannelUri;
 
-            Frame.Navigate(DeviceAPI.IsRegistered == true ? typeof(MainPage) : typeof(RegisterDevicePage));
+            //get hooks and device info
+            var res = await DeviceAPI.Instance.GetDeviceInfoAndHooks();
+            
+            if (res != null)
+            {
+                App.Hooks = res.Hooks;
+                App.DeviceInfo = res.Device;
+            }
+
+            Frame.Navigate(App.DeviceInfo == null ? typeof(RegisterDevicePage) : typeof(MainPage));
 
             //update channel uri
-            await NotificationAPI.Instance.UpdateChannel();
+            App.ChannelUri = await DeviceAPI.Instance.UpdateChannel(App.ChannelUri);
+            AppSettings.Instance.ChannelUri = App.ChannelUri;
         }
 
         protected override void OnNavigatedFrom(NavigationEventArgs e)

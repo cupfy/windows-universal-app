@@ -11,7 +11,7 @@
     
     <Page.BottomAppBar>
         <CommandBar>
-            <AppBarButton Icon="Forward" Label="continue" Command="{Binding RegisterDeviceCommand}"/>
+            <AppBarButton Icon="Forward" Label="continue" Command="{Binding RegisterOrUpdateDeviceCommand}"/>
         </CommandBar>
     </Page.BottomAppBar>
 

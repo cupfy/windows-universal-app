@@ -4,28 +4,35 @@ using System;
 
 namespace Hooks.ViewModels
 {
-    public class RegisterDeviceViewModel
+    public class RegisterDeviceViewModel : BaseViewModel
     {
-        public RelayCommand RegisterDeviceCommand { get; private set; }
+        public RelayCommand RegisterOrUpdateDeviceCommand { get; private set; }
 
         public RegisterDeviceViewModel()
         {
-            RegisterDeviceCommand = new RelayCommand(RegisterDevice);
+            RegisterOrUpdateDeviceCommand = new RelayCommand(RegisterOrUpdateDevice);
+
+            App.DeviceInfoChanged += (s, e) => { if (App.DeviceInfo != null) { DeviceName = App.DeviceInfo.Name; } NotifyChanges(); };
         }
 
-        public string DeviceName { get { return deviceName; } set { deviceName = value; RegisterDeviceCommand.RaiseCanExecuteChanged(); } }
+        public string DeviceName { get { return deviceName; } set { deviceName = value; RegisterOrUpdateDeviceCommand.RaiseCanExecuteChanged(); } }
         private string deviceName = "";
 
         public string DeviceModelName { get { return DeviceAPI.DEVICE_MODEL; } }
 
         #region COMMANDS_ACTIONS
 
-        private async void RegisterDevice()
+        private async void RegisterOrUpdateDevice()
         {
-            if(await DeviceAPI.Instance.Register(DeviceName))
-            {
+            if (String.IsNullOrEmpty(DeviceName)) return;
+
+            if (App.DeviceInfo == null)
+                App.DeviceInfo = await DeviceAPI.Instance.Register(DeviceName, App.ChannelUri);
+            else
+                App.DeviceInfo = await DeviceAPI.Instance.UpdateInfo(DeviceName);
+
+            if (App.DeviceInfo != null)
                 App.RootFrame.Navigate(typeof(MainPage));
-            }
         }
 
         #endregion
