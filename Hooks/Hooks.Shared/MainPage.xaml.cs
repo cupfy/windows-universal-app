@@ -1,8 +1,6 @@
-﻿using System;
-using Windows.UI.Xaml.Controls;
+﻿using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Navigation;
 using Hooks.Common;
-using Windows.UI.Xaml;
 
 namespace Hooks
 {

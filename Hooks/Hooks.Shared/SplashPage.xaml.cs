@@ -12,7 +12,7 @@ namespace Hooks
         {
             this.InitializeComponent();
 
-            LoadApplication();
+            this.Loaded += (s, e) => { LoadApplication(); };
         }
 
         async void LoadApplication()
